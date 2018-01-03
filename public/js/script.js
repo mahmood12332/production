@@ -147,8 +147,11 @@
   $scope.logmeout = function() {
     $scope.fbAuth.$signOut();
     $scope.err.message = "Logged Out";
+    $scope.redirects();
   };
-  console.error("ERROR: ");
+  $scope.redirects = function(){
+          window.location = "/#!/login";
+        }
     $scope.deleteuser = function() {
     $scope.fbAuth.$deleteUser();
     $scope.err.message = "User Deleted";
