@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Namazi</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body style="height: 100%;">
+	<div class="container-fluid">
+		<div class="row" >
+			<div class="col-lg-4 col-sm-6 pr-sm-0">
+				<img src="{{list.imageUrl}}" class="img-fluid detail-img">
+				<table class="table table-responsive table-hover table-inverse">
+						<tr>
+							<th>Masjid Name</th>
+							<td>{{list.name + "&nbsp;" + "(" + list.sect + ")"}}</td>
+						</tr>
+						<tr>
+							<th>Location</th>
+							<td>{{list.location}}</td>
+						</tr>
+						<tr>
+							<th>Fajar</th>
+							<td>{{list.fajrTime}}</td>
+						</tr>
+						<tr >
+							<th>Zohar</th>
+							<td >{{list.dhuhrTime}}</td>
+						</tr>
+						<tr>
+							<th>Asar</th>
+							<td>{{list.asrTime}}</td>
+						</tr>
+						<tr >
+							<th>Magrib</th>
+							<td>{{list.maghribTime}}</td>
+						</tr>
+						<tr>
+							<th>Esha</th>
+							<td>{{list.ishaTime}}</td>
+						</tr>
+						<tr >
+							<th>Jumma</th>
+							<td>{{list.jummaPrayer}}</td>
+						</tr>
+				</table>
+			</div>
+
+			<div class="col-lg-8 col-sm-6 pl-sm-0" ng-controller="MyController">
+				<div map-lazy-load="https://maps.google.com/maps/api/js">
+					  <ng-map center="{{list.latitude}},{{list.longitude}}" zoom="15" style="height:780px;">
+					  	<marker position="{{list.latitude}},{{list.longitude}}"></marker>
+					  </ng-map>
+					</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
