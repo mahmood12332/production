@@ -3,8 +3,15 @@
 		<div class="alert alert-success" role="alert">
 			<strong>Namazi!</strong> Details of Masjid.
 		</div>
+		
 		<div class="row">
-			<div class="col-md-4" ng-repeat="ls in list">
+		    <div class="col-md-12">
+		    	<div class="form-group">
+					<label for="uname1">Search</label>
+					<input type="text" class="form-control form-control-lg rounded-0" ng-model="test" placeholder="Search">
+				</div>
+		    </div>
+			<div class="col-md-4" ng-repeat="ls in list | filter:test">
 			    <a class="detail-link" href="#!{{ls.$id}}/detail">
 					<div class="card rounded-0 mt-3" >
 						<div class="card-header">
@@ -17,96 +24,5 @@
 					</div>
 				</a>
 			</div>
-			<!-- <div class="col-md-4">
-			    <a class="detail-link" href="#!detail">
-					<div class="card rounded-0 mt-3">
-						<div class="card-header">
-							<img src="images/img-1.jpg" class="rounded img-fluid">
-						</div>
-						<div class="card-body">
-						    <p class="text-center "><strong>Masjid Name</strong></p>
-						    <h4 class="text-center">Masjid-e-Toheed</h4>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-			    <a class="detail-link" href="#!detail">
-					<div class="card rounded-0 mt-3">
-						<div class="card-header">
-							<img src="images/img-1.jpg" class="rounded img-fluid">
-						</div>
-						<div class="card-body">
-						    <p class="text-center "><strong>Masjid Name</strong></p>
-						    <h4 class="text-center">Masjid-e-Toheed</h4>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-			    <a class="detail-link" href="#!detail">
-					<div class="card rounded-0 mt-3">
-						<div class="card-header">
-							<img src="images/img-1.jpg" class="rounded img-fluid">
-						</div>
-						<div class="card-body">
-						    <p class="text-center "><strong>Masjid Name</strong></p>
-						    <h4 class="text-center">Masjid-e-Toheed</h4>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-			    <a class="detail-link" href="#!detail">
-					<div class="card rounded-0 mt-3">
-						<div class="card-header">
-							<img src="images/img-1.jpg" class="rounded img-fluid">
-						</div>
-						<div class="card-body">
-						    <p class="text-center "><strong>Masjid Name</strong></p>
-						    <h4 class="text-center">Masjid-e-Toheed</h4>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-			    <a class="detail-link" href="#!detail">
-					<div class="card rounded-0 mt-3">
-						<div class="card-header">
-							<img src="images/img-1.jpg" class="rounded img-fluid">
-						</div>
-						<div class="card-body">
-						    <p class="text-center "><strong>Masjid Name</strong></p>
-						    <h4 class="text-center">Masjid-e-Toheed</h4>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-			    <a class="detail-link" href="#!detail">
-					<div class="card rounded-0 mt-3">
-						<div class="card-header">
-							<img src="images/img-1.jpg" class="rounded img-fluid">
-						</div>
-						<div class="card-body">
-						    <p class="text-center "><strong>Masjid Name</strong></p>
-						    <h4 class="text-center">Masjid-e-Toheed</h4>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-md-4">
-			    <a class="detail-link" href="#!detail">
-					<div class="card rounded-0 mt-3">
-						<div class="card-header">
-							<img src="images/img-1.jpg" class="rounded img-fluid">
-						</div>
-						<div class="card-body">
-						    <p class="text-center "><strong>Masjid Name</strong></p>
-						    <h4 class="text-center">Masjid-e-Toheed</h4>
-						</div>
-					</div>
-				</a>
-			</div> -->
 		</div>
 	</div>
