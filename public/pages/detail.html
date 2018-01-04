@@ -18,10 +18,11 @@
 	<div class="container-fluid">
 		<div class="row" >
 			<div class="col-lg-4 col-sm-6 pr-sm-0">
-				<img src="{{list.imageUrl}}" class="img-fluid detail-img">
+				<img ng-src="{{list.imageUrl}}" src="images/img-1.jpg" class="img-fluid detail-img">
 				<table class="table table-responsive table-hover table-inverse">
-						<tr>
-							<th>Masjid Name</th>
+				    <tbody >
+						<tr >
+							<th style="width:55%;">Masjid Name</th>
 							<td>{{list.name + "&nbsp;" + "(" + list.sect + ")"}}</td>
 						</tr>
 						<tr>
@@ -52,6 +53,11 @@
 							<th>Jumma</th>
 							<td>{{list.jummaPrayer}}</td>
 						</tr>
+						<tr >
+							<th>Followers</th>
+							<td>{{ list.followersMap.userIDs.length }}</td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
 

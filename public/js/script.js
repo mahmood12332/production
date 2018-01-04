@@ -1,7 +1,7 @@
 // script.js
 
     // create the module and name it scotchApp
-        // also include ngRoute for all our routing needs
+        // also include ngRoute for all our routing needs    
     var mapp = angular.module("MyApp", ['firebase','ngRoute','ngMap']);
          var config = {
             apiKey: "AIzaSyBfy_TN79UUuzWTniXfUN_xFyMAfCZLJeg",
@@ -89,7 +89,8 @@
       }]);
     // create the controller and inject Angular's $scope
     mapp.controller('loginController',['$scope', '$firebaseObject', '$firebaseAuth', '$firebaseArray', function($scope, $firebaseObject, $firebaseAuth, $firebaseArray){
- 
+    $scope.username = "namazi@gmail.com";
+    $scope.password = "12345678";
             $scope.fbAuth = $firebaseAuth();
             $scope.err = {};
             $scope.btn_hide = true;
@@ -112,6 +113,7 @@
         ).then(function(authData) {
             $scope.err.message = "Successfully Logged in as " + authData.uid +" "+authData.providerId;
           $scope.btn_hide = false;
+          $scope.reload();
           $scope.redirect();
         }).catch(function(error) {
           $scope.err.message = "Error" + error;
@@ -124,14 +126,16 @@
         }
   
       $scope.regmein = function(usernames, passwords) {
-        console.error("User Details: " + usernames +  $scope.usernames);
-       // username = "test@test123.com";
         $scope.fbAuth.$createUserWithEmailAndPassword(
             usernames,
             passwords
         ).then(function(authData) {
-            $scope.err.message = "User registered "+authData.uid;
-            // $scope.load();
+            // $scope.err.message = "User registered "+authData.uid;
+            // // $scope.load();
+            console.log("here")
+            $scope.populate()
+            $scope.reload()
+            $scope.logmein($scope.username, $scope.password);
         }).catch(function(error) {
           $scope.err.message = "Error" + error;
             console.error("ERROR: " + error);
@@ -143,11 +147,15 @@
        
 
     // };
+    $scope.reload = function(){
+       location.reload(); 
+    }
   
   $scope.logmeout = function() {
     $scope.fbAuth.$signOut();
     $scope.err.message = "Logged Out";
     $scope.redirects();
+    $scope.reload();
   };
   $scope.redirects = function(){
           window.location = "/#!/login";
@@ -186,11 +194,12 @@
   $scope.populate = function(){
     var authData = $scope.fbAuth.$getAuth();
     if (authData){
-    var refPath = "/development/Masjids"+authData.uid;
+    var refPath = "/development/Users";
     so = $firebaseArray(db.ref(refPath));
     so.$add({
-      lnames: $scope.lnames
+      user_Type: $scope.user_Type
     }).then(function(dat){
+      console.log('here-1');
       $scope.err.message = "Data uploaded";
     });
     }
