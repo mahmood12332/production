@@ -1,0 +1,33 @@
+<div class="container-fluid py-3">
+    <div class="alert alert-success" role="alert">
+        <strong>Namazi!</strong> Requests of Masjid.
+    </div>
+	<div class="row">
+		<div class="col-md-4" ng-repeat="ls in list">
+      <div class="card rounded-0 mt-3" >
+        <div class="card-body">
+          <table class="table table-responsive table-inverse mb-0 custom-table">
+            <tbody>
+              <tr >
+                <th>Name</th>
+                <td >{{ls.name}}</td>
+              </tr>
+              <tr>
+                <th style="width:55%;">Email</th>
+                <td>{{ls.email}}</td>
+              </tr>
+              <tr>
+                <th>Message</th>
+                <td>{{ls.message}}</td>
+              </tr>
+              <tr>
+                <th>Phone No.</th>
+                <td>{{ls.phoneNum}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+		</div>
+	</div>
+</div>

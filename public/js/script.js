@@ -68,8 +68,17 @@
                   }]
                 }
             })
+            .when('/request', {
+              templateUrl : 'pages/request.html',
+              controller  : 'requestController',
+              resolve: {
+                "currentAuth" : ["Auth",function(Auth){
+                  return Auth.$requireSignIn();
+                }]
+              }
+            })
             .otherwise({
-              redirectTo: '/'
+              redirectTo: '/' 
             });
     });
       mapp.controller('MyController', function(NgMap) {
@@ -89,8 +98,8 @@
       }]);
     // create the controller and inject Angular's $scope
     mapp.controller('loginController',['$scope', '$firebaseObject', '$firebaseAuth', '$firebaseArray', function($scope, $firebaseObject, $firebaseAuth, $firebaseArray){
-    $scope.username = "namazi@gmail.com";
-    $scope.password = "12345678";
+            $scope.username = "namazi@gmail.com";
+            $scope.password= "12345678";
             $scope.fbAuth = $firebaseAuth();
             $scope.err = {};
             $scope.btn_hide = true;
@@ -121,6 +130,7 @@
           $scope.btn_hide = true;
         });
             };
+
         $scope.redirect = function(){
           window.location = "/#!/admin";
         }
@@ -134,7 +144,6 @@
             // // $scope.load();
             console.log("here")
             $scope.populate()
-            $scope.reload()
             $scope.logmein($scope.username, $scope.password);
         }).catch(function(error) {
           $scope.err.message = "Error" + error;
@@ -306,3 +315,38 @@
     });
 }
 }]);   
+  mapp.controller('requestController',['$scope','$firebaseObject', '$firebaseArray', 'Auth','$location', function($scope,$firebaseObject, $firebaseArray, Auth,$location){
+     
+  var aout = Auth.$getAuth();
+  if (aout){
+  var reff = '/development/newRequests'+aout.Identifier;
+    if (aout.email=='testadmin@test.com'){
+      reff = '/development/newRequests';
+    }
+
+    
+    // $scope.uid = {};
+    // $scope.lst = {};
+    $scope.list = [];
+    // $scope.lst = $firebaseArray(db.ref(reff));
+    $scope.newlst = $firebaseArray(db.ref('/development/newRequests'));
+    // $scope.user = $firebaseArray(db.ref('/development/newRequests'));
+         
+    // $scope.lst.$loaded().then(function(object){
+    //  $scope.lst = object;
+    //  console.log($scope.lst)
+    // });
+
+    $scope.newlst.$loaded().then(function(object){
+
+     $scope.list = object;
+     if (object.length < 1 ) {
+       console.log("true")    
+     } else {
+      console.log("else")   
+     }
+     console.log($scope.list)
+     console.log($scope.list.length)
+    });
+}
+}]);  

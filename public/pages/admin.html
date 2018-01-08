@@ -5,6 +5,9 @@
 		<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#myModal">
 			Add masjid
 		</button>
+		<a href="#!request" class="btn btn-primary float-right mr-3">
+			Detail
+		</a>
 	</div>
 	<!-- The Modal -->
 	<div class="modal fade" id="myModal" ng-controller="loginController">
@@ -28,19 +31,11 @@
 							<label for="pwd">Password:</label>
 							<input type="password" class="form-control" ng-model="passwords" id="pwd">
 						</div>
-						<div class="form-group">
-							<label >User Type:</label>
-							<input type="text" class="form-control" ng-model="user_Type" >
+						<div class="text-center">
+							<button type="submit" class="btn btn-success btn-lg"  ng-click="regmein(usernames,passwords)" data-dismiss="modal">Add Masjid</button>
 						</div>
-						<button type="submit" class="btn btn-success btn-lg float-right"  ng-click="regmein(usernames,passwords)" data-dismiss="modal">Login</button>
 					</form>
 				</div>
-
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" >Close</button>
-				</div>
-
 			</div>
 		</div>
 	</div>

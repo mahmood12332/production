@@ -32,9 +32,10 @@ img{
 	height: 320px;
 	object-fit: contain;
 }
-
+.custom-table td, .custom-table th{
+	border-bottom: 1px solid #ccc;
+	border-top: 0;
+}
 @media (max-width: 786px){
-	iframe{
-		height: 350px;
-	}
+	
 }
