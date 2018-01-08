@@ -36,6 +36,15 @@ img{
 	border-bottom: 1px solid #ccc;
 	border-top: 0;
 }
+.btn-cross{
+	position: absolute;
+	right: 0;
+	top:-4px;
+	background-color: transparent;
+	border: 0;
+	font-size: 1.5rem;
+	cursor: pointer;
+}
 @media (max-width: 786px){
 	
 }
