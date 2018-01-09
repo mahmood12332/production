@@ -98,8 +98,7 @@
       }]);
     // create the controller and inject Angular's $scope
     mapp.controller('loginController',['$scope', '$firebaseObject', '$firebaseAuth', '$firebaseArray', function($scope, $firebaseObject, $firebaseAuth, $firebaseArray){
-            $scope.username = "namazi@gmail.com";
-            $scope.password= "12345678";
+           
             $scope.fbAuth = $firebaseAuth();
             $scope.err = {};
             $scope.btn_hide = true;
@@ -115,6 +114,8 @@
                 $scope.btn_show = false;
               }
             });
+            $scope.username = "namazi@gmail.com";
+            $scope.password= "12345678";
       $scope.logmein = function(username, password) {
         $scope.fbAuth.$signInWithEmailAndPassword(
             username,
@@ -125,7 +126,7 @@
           // $scope.reload();
           $scope.redirect();
         }).catch(function(error) {
-          $scope.err.message = "Error" + error;
+          $scope.err.message = error;
             console.error("ERROR: " + error);
           $scope.btn_hide = true;
         });
@@ -146,7 +147,7 @@
             $scope.populate()
             $scope.logmein($scope.username, $scope.password);
         }).catch(function(error) {
-          $scope.err.message = "Error" + error;
+          $scope.err.message = error;
             console.error("ERROR: " + error);
         });
 
