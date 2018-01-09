@@ -29,6 +29,13 @@
 							<th>Location</th>
 							<td>{{list.location}}</td>
 						</tr>
+						<tr >
+							<th>Followers</th>
+							<td>{{ list.followersMap.userIDs.length }}</td>
+						</tr>
+						<tr >
+							<th>Prayers</th>
+						</tr>
 						<tr>
 							<th>Fajar</th>
 							<td>{{list.fajrTime}}</td>
@@ -52,10 +59,6 @@
 						<tr >
 							<th>Jumma</th>
 							<td>{{list.jummaPrayer}}</td>
-						</tr>
-						<tr >
-							<th>Followers</th>
-							<td>{{ list.followersMap.userIDs.length }}</td>
 						</tr>
 					</tbody>
 				</table>
