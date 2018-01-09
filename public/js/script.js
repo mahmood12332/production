@@ -2,7 +2,7 @@
 
     // create the module and name it scotchApp
         // also include ngRoute for all our routing needs    
-    var mapp = angular.module("MyApp", ['firebase','ngRoute','ngMap']);
+    var mapp = angular.module("MyApp", ['firebase','ngRoute','ngMap','angular.ujs']);
          var config = {
             apiKey: "AIzaSyBfy_TN79UUuzWTniXfUN_xFyMAfCZLJeg",
             authDomain: "namazi-5a144.firebaseapp.com",
@@ -122,7 +122,7 @@
         ).then(function(authData) {
             $scope.err.message = "Successfully Logged in as " + authData.uid +" "+authData.providerId;
           $scope.btn_hide = false;
-          $scope.reload();
+          // $scope.reload();
           $scope.redirect();
         }).catch(function(error) {
           $scope.err.message = "Error" + error;
@@ -206,7 +206,8 @@
     var refPath = "/development/Users";
     so = $firebaseArray(db.ref(refPath));
     so.$add({
-      user_Type: $scope.user_Type
+      email: $scope.usernames,
+      user_Type: "user"
     }).then(function(dat){
       console.log('here-1');
       $scope.err.message = "Data uploaded";
@@ -313,24 +314,34 @@
      console.log($scope.list)
      console.log($scope.list.length)
     });
+    $scope.delete = function(object) {
+      if (confirm("sure to delete")) {
+        // console.log("here")
+        $scope.list.$remove(object);
+        alert('DONE!')
+      }
+      else{
+        console.log("here")
+      }
+  };
 }
-}]);   
-  mapp.controller('requestController',['$scope','$firebaseObject', '$firebaseArray', 'Auth','$location', function($scope,$firebaseObject, $firebaseArray, Auth,$location){
+}]);    
+mapp.controller('requestController',['$scope','$firebaseObject', '$firebaseArray', 'Auth','$location','$routeParams', function($scope,$firebaseObject, $firebaseArray, Auth,$location,$routeParams){
      
   var aout = Auth.$getAuth();
   if (aout){
-  var reff = '/development/newRequests'+aout.Identifier;
-    if (aout.email=='testadmin@test.com'){
-      reff = '/development/newRequests';
-    }
+  // var reff = '/development/Masjids'+aout.Identifier;
+    // if (aout.email=='testadmin@test.com'){
+    //   reff = '/development/Masjids';
+    // }
 
-    
+    console.log($routeParams.id)
     // $scope.uid = {};
     // $scope.lst = {};
-    $scope.list = [];
+    // $scope.list = [];
     // $scope.lst = $firebaseArray(db.ref(reff));
-    $scope.newlst = $firebaseArray(db.ref('/development/newRequests'));
-    // $scope.user = $firebaseArray(db.ref('/development/newRequests'));
+    $scope.newlst =$firebaseArray(db.ref('/development/newRequests'));
+    // $scope.user = $firebaseArray(db.ref('/development/Masjids'));
          
     // $scope.lst.$loaded().then(function(object){
     //  $scope.lst = object;
@@ -348,5 +359,17 @@
      console.log($scope.list)
      console.log($scope.list.length)
     });
+
+    $scope.delete = function(object) {
+      if (confirm("sure to delete")) {
+        // console.log("here")
+        $scope.list.$remove(object);
+        alert('DONE!')
+      }
+      else{
+        console.log("here")
+      }
+  };
+  
 }
-}]);  
+}]);
