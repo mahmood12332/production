@@ -83,7 +83,7 @@
     });
     mapp.run(function($window) {
       $window.var1 = 'production';
-      $window.var2 = 'development';
+      $window.var2 = 'production';
     });
     mapp.controller('MyController', function(NgMap) {
         var vm = this;
@@ -211,7 +211,7 @@
         }
       };
 //   $scope.populate = function(){
-//     var ref = db.ref("/development");
+//     var ref = db.ref("/production");
 //     syncObject = $firebaseObject(ref);
 //     syncObject.$bindTo($scope, "data");                                         
     
@@ -225,7 +225,7 @@
   $scope.populate = function(){
     var authData = $scope.fbAuth.$getAuth();
     if (authData){
-    var refPath = "/development/users";
+    var refPath = "/production/users";
     so = $firebaseArray(db.ref(refPath));
     so.$add({
       email: $scope.usernames,
@@ -281,9 +281,9 @@
       };
       var aout = Auth.$getAuth();
       if (aout){
-      // var reff = '/development/Masjids'+aout.Identifier;
+      // var reff = '/production/Masjids'+aout.Identifier;
         // if (aout.email=='testadmin@test.com'){
-        //   reff = '/development/Masjids';
+        //   reff = '/production/Masjids';
         // }
 
         console.log($routeParams.id)
@@ -291,8 +291,8 @@
         // $scope.lst = {};
         // $scope.list = [];
         // $scope.lst = $firebaseArray(db.ref(reff));
-        $scope.newlst =$firebaseObject(db.ref('/development/Masjids').child($routeParams.id));
-        // $scope.user = $firebaseArray(db.ref('/development/Masjids'));
+        $scope.newlst =$firebaseObject(db.ref('/production/Masjids').child($routeParams.id));
+        // $scope.user = $firebaseArray(db.ref('/production/Masjids'));
             
         // $scope.lst.$loaded().then(function(object){
         //  $scope.lst = object;
@@ -318,9 +318,9 @@
   $window.variables = $scope.fbdata;
   var aout = Auth.$getAuth();
   if (aout){
-  var reff = '/development/Masjids'+aout.Identifier;
+  var reff = '/production/Masjids'+aout.Identifier;
     if (aout.email=='testadmin@test.com'){
-      reff = '/development/Masjids';
+      reff = '/production/Masjids';
     }
 
     
@@ -328,8 +328,8 @@
     // $scope.lst = {};
     $scope.list = [];
     // $scope.lst = $firebaseArray(db.ref(reff));
-    $scope.newlst = $firebaseArray(db.ref('/development/Masjids'));
-    // $scope.user = $firebaseArray(db.ref('/development/Masjids'));
+    $scope.newlst = $firebaseArray(db.ref('/production/Masjids'));
+    // $scope.user = $firebaseArray(db.ref('/production/Masjids'));
          
     // $scope.lst.$loaded().then(function(object){
     //  $scope.lst = object;
@@ -363,9 +363,9 @@ mapp.controller('requestController',['$scope','$firebaseObject', '$firebaseArray
      
   var aout = Auth.$getAuth();
   if (aout){
-    // var reff = '/development/Masjids'+aout.Identifier;
+    // var reff = '/production/Masjids'+aout.Identifier;
     // if (aout.email=='testadmin@test.com'){
-    //   reff = '/development/Masjids';
+    //   reff = '/production/Masjids';
     // }
 
     console.log($routeParams.id)
@@ -373,8 +373,8 @@ mapp.controller('requestController',['$scope','$firebaseObject', '$firebaseArray
     // $scope.lst = {};
     // $scope.list = [];
     // $scope.lst = $firebaseArray(db.ref(reff));
-    $scope.newlst =$firebaseArray(db.ref('/development/newRequests'));
-    // $scope.user = $firebaseArray(db.ref('/development/Masjids'));
+    $scope.newlst =$firebaseArray(db.ref('/production/newRequests'));
+    // $scope.user = $firebaseArray(db.ref('/production/Masjids'));
          
     // $scope.lst.$loaded().then(function(object){
     //  $scope.lst = object;
