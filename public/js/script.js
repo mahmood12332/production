@@ -144,7 +144,7 @@
         ).then(function(authData) {
             $scope.err.message = "Successfully Logged in as " + authData.uid +" "+authData.providerId;
           $scope.btn_hide = false;
-          // $scope.reload();
+          $scope.reload();
           $scope.redirect();
         }).catch(function(error) {
           $scope.err.message = error;
